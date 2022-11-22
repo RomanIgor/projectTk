@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import ttk
 import requests
 import json
+import csv
 # tkinter message box for displaying errors
 from tkinter.messagebox import showerror
 
@@ -13,7 +14,14 @@ url = f'https://v6.exchangerate-api.com/v6/{API_KEY}/latest/USD'
 response = requests.get(f'{url}').json()
 # converting the currencies to dictionaries
 currencies = dict(response['conversion_rates'])
-print(response)
+
+with open('meintest.csv', 'w', newline='') as csvfile:
+    header_key = ['Currency', 'Exchange Rate']
+    new_val = csv.DictWriter(csvfile, fieldnames=header_key)
+
+    new_val.writeheader()
+    for new_k in currencies:
+        new_val.writerow({'Currency': new_k, 'Exchange Rate': currencies[new_k]})
 
 
 def convert_currency():

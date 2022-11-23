@@ -10,10 +10,8 @@ date_now = dt.now().strftime('%Y-%m-%d %H:%M')
 root = tkinter.Tk()
 root.title(f'Exchange Rates - {date_now}')
 frame_color = '#4ca8ff'  # палитра или рал цвета
-# Create A Main Frame
 main_frame = Frame(root)
 main_frame.pack(fill=BOTH, expand=1)
-
 # Create A Canvas
 my_canvas = Canvas(main_frame)
 my_canvas.pack(side=LEFT, fill=BOTH, expand=1)

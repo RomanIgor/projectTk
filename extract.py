@@ -1,17 +1,21 @@
 import requests
 import pandas as pd
+import os
+import json
+import requests
+from dotenv import load_dotenv
+load_dotenv()
 
 url = "https://api.apilayer.com/currency_data/live?base=USD&symbols=EUR,GBP"
 
-payload = {}
-headers= {
-  "apikey": "0NZF0kOcyHlYt8OvOVuGJMYLVbl6My29"
-}
 
-response = requests.request("GET", url, headers=headers, data = payload)
+PAYLOAD = json.loads(os.getenv("PAYLOAD"))  
+HEADERS = json.loads(os.getenv("HEADERS"))
+
+response = requests.request("GET", url, headers=HEADERS, data = PAYLOAD)
 
 status_code = response.status_code
 result = response.text
 
-print(result.to_csv("save_data_exchange.csv"))
-#print(result)
+
+

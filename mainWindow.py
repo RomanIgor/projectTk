@@ -21,27 +21,27 @@ def second_window():
     date_now = dt.now().strftime('%Y-%m-%d %H:%M')
     root = tkinter.Tk()
     root.title(f'Exchange Rates - {date_now}')
-    frame_color = '#4ca8ff'  
+    frame_color = '#4ca8ff'
     main_frame = Frame(root)
     main_frame.pack(fill=BOTH, expand=1)
-   
+
     my_canvas = Canvas(main_frame)
     my_canvas.pack(side=LEFT, fill=BOTH, expand=1)
-   
+
     my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
     my_scrollbar.pack(side=RIGHT, fill=Y)
-    
+
     my_canvas.configure(yscrollcommand=my_scrollbar.set)
     my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion = my_canvas.bbox("all")))
-    
+
     second_frame = Frame(my_canvas)
-    
+
     my_canvas.create_window((0,0), window=second_frame, anchor="nw")
-   
+
     with open("meintest.csv", newline="", encoding='utf-8') as file:
         reader = csv.reader(file)
 
-   
+
         r = 0
         for col in reader:
             c = 0
@@ -74,9 +74,9 @@ with open('meintest.csv', 'w', newline='') as csvfile:
 
 
 def convert_currency():
-   
+
     try:
-        
+
         source = from_currency_combo.get()
         destination = to_currency_combo.get()
         amount = amount_entry.get()
@@ -87,7 +87,7 @@ def convert_currency():
         formatted_result = f'{amount} {source} = {converted_result} {destination}'
         result_label.config(text=formatted_result)
         time_label.config(text='Last updated,' + result['time_last_update_utc'])
-   
+
     except:
         showerror(title='Error',
                   message="An error occurred!!. Fill all the required field or check your internet connection.")
@@ -160,7 +160,7 @@ quit_button = Button(bottom_frame, text='close', bg=optional, fg=white, font=('P
                      command=window.destroy)
 quit_button.place(x=245, y=165)
 
- 
+
 
 mainloop()
 

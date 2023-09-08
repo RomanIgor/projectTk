@@ -48,11 +48,7 @@ Before running the application on Windows with X11, make sure you have the follo
 
  - Click the "Click to open the Exchange Rate" button to open a separate window displaying exchange rates from the meintest.csv file.
 ![Converter View](./images/ExchangeRateView.png)
-## Docker Support
 
-You can also run this application in a Docker container. Use the provided Dockerfile to build an image and run the application inside a container.
- - docker build -t currency-converter-app .
- - docker run -it currency-converter-app
 
 ## Acknowledgments
 
